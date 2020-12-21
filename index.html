@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="content/html; charset=iso-8859-1" />
+        <title>Fred Vaughn's github site</title>
         <style type="text/css">
             body {
-                background: #ccc; 
+                background: #4a525a;
+                font-family: Georgia, sans-serif;
             }
-        </style>
-    </head>    
-    <body>
-        <h1>fredmv.github.io</h1>
-    </body>
+            
+            h1 { font-family: Verdana, serif; font-weight: 900; color: #fff; font-size: 18pt;  font-family: 'courier new'; float: left; }
+            p  { color: #fff; }
+               
+            li a {
+                font-size: 10pt;
+                background: dodgerblue;
+                color: #fff;
+                display: block;
+                float: left;
+                padding: 1em;
+                width: 100px;
+                border-top: solid #fff 1px;
+ 
+            }
+            
+            li { list-style-type: none }
+            
+            ul#nav { float: right }
 
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+        </style>
+        
+        <h1>fredmv.github.io<span class="blink_me">_</span></h1>
+        
+        
+        <ul id="nav">
+            <li><a href="#">Resume</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </head>
 </html>
+n/a
