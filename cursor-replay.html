@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>cursor replay</title>
+        <head>
+            <script type="text/javascript">
+
+                var x = [], y = [];
+                var i = 0;
+
+                function logMovement(event) {
+                    x.push(event.clientX);
+                    y.push(event.clientY);
+                }
+
+                function cleanUp() { 
+                    alert("love ya's <3");
+                    document.getElementById('redBox').style.display = 'none';
+                }
+                
+
+                function doPlayback() {
+                    
+                    var box = document.getElementById('redBox');
+                    var eventLog = document.getElementById('evt');
+
+                    document.removeEventListener('mousemove', logMovement);
+
+                    box.style.display = 'block';
+                    eventLog.style.display = 'block';
+
+                    interval = setInterval(function() { 
+                        if(typeof x[i] != 'undefined' && y[i] != null) {
+                            box.style.left = x[i] + 'px';
+                            box.style.top = y[i] + 'px';
+                            eventLog.innerHTML += 'currently at: [' + x[i] + ',' + y[i] + ']<br />';
+                            eventLog.scrollTop = eventLog.scrollHeight;
+                           // eventLog.innerHTML = '<img src="" />'
+                        }
+
+                        else {
+                            window.clearInterval(interval);
+                            box.innerHTML = 'all done!';
+                            //eventLog.style.height = '498px;';
+                            //eventLog.style.width = '498px;';
+                            redBox.innerHTML = '<img src="34df1a5f3446dde267cba81bd4d428b1.gif" /><a href=# onclick="return self.cleanUp()">close</a>';
+                        }
+
+                        i++;
+
+                    }, 10); 
+                }
+  
+
+            </script>
+            <style type="text/css">
+                #but, #play {
+                    background: #ac1;
+                    color: #009;
+                }
+                #evt    { display: none; overflow-y: auto; width: 350px; height: 200px; font-family: "Courier New"; border: solid #000 1px; }
+                #redBox { background: #f00; height: 50px; width: 50px; border: solid #000 1px; position: relative; display: none; color:#fff; }
+            </style>    
+    </head>
+    <body style="background: lightblue;">
+        <button id="but" 
+        
+        onclick="document.addEventListener('mousemove', logMovement);
+            this.disabled=true; 
+            this.innerHTML='Recording...'; this.style.background='red'; this.style.color='#fff';">Start Recording</button>
+
+        <button id="play" onclick="doPlayback()">Play</button>
+        
+        <hr>
+
+        <div id="redBox">&nbsp;</div>
+        
+        <div id="evt">
+            &nbsp;
+        </div>
+    </body>
+</html>
